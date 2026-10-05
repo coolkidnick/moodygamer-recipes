@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "id": "lego-batman-3-beyond-gotham.selftest-batman-container-2026-10-04",
+  "slug": "lego-batman-3-beyond-gotham",
+  "game": {
+    "title": "LEGO Batman 3: Beyond Gotham",
+    "exe": "LEGOBatman3.exe",
+    "steam_appid": 313690,
+    "gamehub_id": 160159,
+    "aliases": [
+      "LEGOBatman3"
+    ]
+  },
+  "target": {
+    "app": "gamehub",
+    "package_name": "com.xiaoji.egggame",
+    "app_version_note": "6.3.1"
+  },
+  "device": {
+    "manufacturer": "REDMAGIC",
+    "model": "NX799J",
+    "soc": "Snapdragon 8 Elite",
+    "gpu": "Adreno 830",
+    "ram_gb": 16,
+    "android_version": "16",
+    "notes": "REDMAGIC 11 Air (SM8750)."
+  },
+  "settings": {
+    "wine_or_proton": "proton10.0-arm64x-2",
+    "dxvk_version": "2.4.1-async",
+    "translator_preset": "Custom",
+    "gpu_driver": "turnip_v26.1.0_b8",
+    "extra": {
+      "container": "Batman: Arkham Asylum GOTY (GameHub id 156707)",
+      "launch_via": "lego_run.bat",
+      "launch_via_aliases": [
+        "0lego.bat",
+        "bm_lego.bat"
+      ],
+      "launch_from": "D: inside the virtual desktop",
+      "fex_custom_enabled": [
+        "Vector TSO",
+        "Memcpy TSO",
+        "Half Barrier"
+      ],
+      "fex_custom_note": "Batman's container used a Custom FEX preset: original values plus Vector TSO, Memcpy TSO, and Half Barrier. Texture scrambling occurred regardless of FEX build, so no FEX build name is recorded here."
+    }
+  },
+  "verification": {
+    "status": "verified",
+    "performance": "intro 60 FPS",
+    "average_fps": "60",
+    "notes": "Nick Moody phone self-test, 2026-10-04 21:02. Epic copy launched from Batman's container via virtual desktop → D: → 0lego.bat (same as bm_lego.bat / lego_run.bat). Container stack as recorded: Proton 10.0-arm64x-2, DXVK 2.4.1-async, Turnip v26.1.0_b8, plus the container's custom FEX parameters. Intro rendering at 60 FPS, CPU 11%, GPU 72%. Gameplay, saving, and controller were not tested. The Epic library tile itself never launches (files downloaded, GameHub never marks the game installed). Do not start the same script through Run program.",
+    "known_issues": [
+      "Texture scrambling (present in Batman's container on Proton 10.0-arm64x-2 + custom FEX, regardless of Turnip b6/b8, FEX build, or DXVK 2.3.1/2.4.1). Not present on the Proton 11.0-arm64x local-import defaults path.",
+      "Run program fails with DxvkInstance::createInstance: Failed to create Vulkan 1.1 instance. Launch lego_run.bat / 0lego.bat from D: inside the virtual desktop."
+    ]
+  },
+  "provenance": {
+    "source_type": "self_test",
+    "source_url": "https://github.com/coolkidnick/moodygamer-recipes",
+    "source_id": "selftest-batman-container-2026-10-04",
+    "author": "Nick Moody",
+    "captured_at": "2026-10-04",
+    "license_note": "Owner tests by Nick Moody on 2026-10-04. Distinct from EmuReady community listings for this title."
+  },
+  "tags": [
+    "virtual-desktop",
+    "epic",
+    "redmagic-11-air",
+    "batman-container"
+  ]
+}

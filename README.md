@@ -23,6 +23,7 @@ recipes/<slug>/*.json       Sourced recipes only
 recipes/examples/           Placeholder example (status: example — never apply)
 scripts/validate.js         Node validator (no npm deps)
 docs/research.md            Research notes + sources
+docs/failure-signatures.md  GameHub log patterns from owner self-tests (diagnoser)
 ```
 
 ## Safety rules (for humans and for `mg`)
@@ -42,6 +43,11 @@ This project targets **stock GameHub** (and later Winlator / GameNative). It is 
 - Unknown games will **not** auto-work.
 - Stock GameHub has no documented public import API for Wine settings; apply paths must stay dry-run-first and user-confirmed (see `docs/research.md`).
 - EmuReady and community reports can be wrong or outdated—`community` ≠ `verified`.
+- Owner self-tests (`provenance.source_type` = `self_test`) are phone results from Nick Moody. They sit next to EmuReady `community` recipes for the same game and are not a substitute for those listings.
+
+## Diagnostics
+
+`docs/failure-signatures.md` lists patterns in GameHub `log_pcengine_*.txt` from the 2026-10-04 REDMAGIC 11 Air / GameHub 6.3.1 tests. The `mg` diagnoser should start there. A matching line is an observation from that phone, not a licence to invent settings.
 
 ## How to contribute a recipe
 

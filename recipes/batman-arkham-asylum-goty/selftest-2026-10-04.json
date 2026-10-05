@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0.0",
+  "id": "batman-arkham-asylum-goty.selftest-2026-10-04",
+  "slug": "batman-arkham-asylum-goty",
+  "game": {
+    "title": "Batman: Arkham Asylum GOTY",
+    "exe": "ShippingPC-BmGame.exe",
+    "gamehub_id": 156707
+  },
+  "target": {
+    "app": "gamehub",
+    "package_name": "com.xiaoji.egggame",
+    "app_version_note": "6.3.1"
+  },
+  "device": {
+    "manufacturer": "REDMAGIC",
+    "model": "NX799J",
+    "soc": "Snapdragon 8 Elite",
+    "gpu": "Adreno 830",
+    "ram_gb": 16,
+    "android_version": "16",
+    "notes": "REDMAGIC 11 Air (SM8750)."
+  },
+  "settings": {
+    "wine_or_proton": "proton10.0-arm64x-2",
+    "dxvk_version": "2.4.1-async",
+    "translator_preset": "Custom",
+    "gpu_driver": "turnip_v26.1.0_b8",
+    "resolution": "1280x720",
+    "env_vars": "DXVK_LOG_PATH=D: DXVK_LOG_LEVEL=info",
+    "components": [
+      {
+        "name": "physx 1.0.1"
+      }
+    ],
+    "extra": {
+      "launch_via": "bm_run.bat",
+      "launch_via_aliases": [
+        "0run.bat"
+      ],
+      "launch_from": "D: inside the virtual desktop",
+      "launches_exe": "ShippingPC-BmGame.exe",
+      "do_not_launch": "Binaries\\Batman.exe",
+      "fex_custom_enabled": [
+        "Vector TSO",
+        "Memcpy TSO",
+        "Half Barrier"
+      ],
+      "fex_custom_note": "Custom preset: original values plus Vector TSO, Memcpy TSO, and Half Barrier turned on. The original custom values were not recorded separately. No FEX build name was recorded.",
+      "bmengine_ini": {
+        "AmbientOcclusion": "False",
+        "FogVolumes": "False",
+        "DepthOfField": "False",
+        "MotionBlur": "False",
+        "Distortion": "False",
+        "ResX": 1280,
+        "ResY": 720
+      },
+      "bmengine_ini_note": "Original backed up as BmEngine.ini.bak beside the file and in scripts/batman-config/."
+    }
+  },
+  "verification": {
+    "status": "verified",
+    "performance": "55-60 FPS at menu and opening",
+    "average_fps": "55-60",
+    "notes": "Nick Moody phone self-test, 2026-10-04. Epic copy (GameHub id 156707). physx component 1.0.1 is required: without it the real game reported a General protection fault. Launch ShippingPC-BmGame.exe via bm_run.bat (same as 0run.bat) from D: inside the virtual desktop, not the Epic starter Batman.exe. BmEngine.ini: AmbientOcclusion, FogVolumes, DepthOfField, MotionBlur, and Distortion set to False; ResX/ResY 1280x720. FEX translation Custom, original values plus Vector TSO, Memcpy TSO, and Half Barrier turned on. Env: DXVK_LOG_PATH=D: and DXVK_LOG_LEVEL=info (was warn). Container graphics stack recorded the same day, when LEGO Batman 3 was launched from this container: Proton 10.0-arm64x-2, DXVK 2.4.1-async, Turnip v26.1.0_b8. Menu and opening ran at 55–60 FPS. ProtonDB leads (newer Proton general-protection faults, Proton 8, PhysX effects off, -nolauncher) were not tried. GameHub has proton9.0-arm64x-3 installed; it was not the tested container.",
+    "known_issues": [
+      "Blocky/checkerboard shading on the menu still present",
+      "Crashed once after about 4 minutes: Assertion failed: appUncompressMemory(...) UnAsyncWork.cpp line 170. Vector TSO, Memcpy TSO, and Half Barrier were turned on in response; not yet confirmed fixed",
+      "Epic starter Binaries\\Batman.exe exits in about 4 seconds with code 0 (opens BmLauncher.exe and exits). GameHub then closes the container. The library tile still does this",
+      "Wide static band across the screen in gameplay before the BmEngine.ini effects were turned off; gameplay not re-checked after that change",
+      "FEX preset Compatible: 14 FPS, CPU 100%, stuttering audio. Too slow. Not the applied preset"
+    ]
+  },
+  "provenance": {
+    "source_type": "self_test",
+    "source_url": "https://github.com/coolkidnick/moodygamer-recipes",
+    "source_id": "selftest-2026-10-04",
+    "author": "Nick Moody",
+    "captured_at": "2026-10-04",
+    "license_note": "Owner tests by Nick Moody on 2026-10-04. Distinct from EmuReady community listings."
+  },
+  "tags": [
+    "epic",
+    "redmagic-11-air",
+    "virtual-desktop"
+  ]
+}

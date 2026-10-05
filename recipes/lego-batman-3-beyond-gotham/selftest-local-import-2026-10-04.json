@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0.0",
+  "id": "lego-batman-3-beyond-gotham.selftest-local-import-2026-10-04",
+  "slug": "lego-batman-3-beyond-gotham",
+  "game": {
+    "title": "LEGO Batman 3: Beyond Gotham",
+    "exe": "LEGOBatman3.exe",
+    "steam_appid": 313690,
+    "gamehub_id": 160159,
+    "aliases": [
+      "LEGOBatman3"
+    ]
+  },
+  "target": {
+    "app": "gamehub",
+    "package_name": "com.xiaoji.egggame",
+    "app_version_note": "6.3.1"
+  },
+  "device": {
+    "manufacturer": "REDMAGIC",
+    "model": "NX799J",
+    "soc": "Snapdragon 8 Elite",
+    "gpu": "Adreno 830",
+    "ram_gb": 16,
+    "android_version": "16",
+    "notes": "REDMAGIC 11 Air (SM8750)."
+  },
+  "settings": {
+    "wine_or_proton": "proton11.0-arm64x",
+    "dxvk_version": "2.6-1-async",
+    "cpu_translator": "Fex_20260913",
+    "translator_preset": "Game Preset",
+    "gpu_driver": "turnip_v26.1.0_b8"
+  },
+  "verification": {
+    "status": "verified",
+    "performance": "Passed",
+    "average_fps": "60",
+    "notes": "Nick Moody phone self-test, 2026-10-04. Epic copy (GameHub id 160159); the title is also sold on Steam (appid 313690). Working path is Library → Import → Local Game after copying the install to /sdcard/Download/LEGOBatman3 (~8.3 GB duplicate of the 8.67 GB Epic install; ask before large copies). The new tile \"LEGOBatman3\" launched with GameHub defaults reported as Proton 11.0-arm64x, DXVK 2.6-1-async, Fex_20260913, Game Presets, Turnip v26.1.0_b8. Intro rendering ~60 FPS, first frame in 5 s, Passed. Gameplay, saving, and controller were not tested. Texture scrambling was not present on this Proton 11 defaults path (menu, planet, and button icons rendered correctly; characters not yet checked). Texture scrambling was present on the Proton 10 + custom FEX path in Batman's container. No environment variables were recorded for this tile.",
+    "known_issues": [
+      "Gameplay, saving, and controller were not tested",
+      "Characters were not checked for texture scrambling"
+    ]
+  },
+  "provenance": {
+    "source_type": "self_test",
+    "source_url": "https://github.com/coolkidnick/moodygamer-recipes",
+    "source_id": "selftest-local-import-2026-10-04",
+    "author": "Nick Moody",
+    "captured_at": "2026-10-04",
+    "license_note": "Owner tests by Nick Moody on 2026-10-04. Distinct from EmuReady community listings for this title."
+  },
+  "tags": [
+    "local-game-import",
+    "epic",
+    "redmagic-11-air"
+  ]
+}
