@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "id": "lego-batman-3-beyond-gotham.selftest-local-import-2026-10-04",
+  "slug": "lego-batman-3-beyond-gotham",
+  "game": {
+    "title": "LEGO Batman 3: Beyond Gotham",
+    "exe": "LEGOBatman3.exe",
+    "steam_appid": 313690,
+    "gamehub_id": 160159,
+    "aliases": [
+      "LEGOBatman3"
+    ]
+  },
+  "target": {
+    "app": "gamehub",
+    "package_name": "com.xiaoji.egggame",
+    "app_version_note": "6.3.1"
+  },
+  "device": {
+    "manufacturer": "REDMAGIC",
+    "model": "NX799J",
+    "soc": "Snapdragon 8 Elite",
+    "gpu": "Adreno 830",
+    "ram_gb": 16,
+    "android_version": "16",
+    "notes": "REDMAGIC 11 Air (SM8750)."
+  },
+  "settings": {
+    "wine_or_proton": "Proton 11.0-arm64x",
+    "dxvk_version": "2.6-1-async",
+    "cpu_translator": "Fex_20260913",
+    "translator_preset": "Game Presets",
+    "gpu_driver": "Turnip v26.1.0_b8",
+    "resolution": "1280x720",
+    "audio_driver": "PulseAudio",
+    "extra": {
+      "import_exe": "LEGOBatman3.exe",
+      "copy_via": "lego_copy.bat",
+      "copy_from": "Z:\\data\\user\\0\\com.xiaoji.egggame\\files\\xj_winemu\\xj_install\\game\\lego-batman-3\\home",
+      "copy_to": "/sdcard/Download/LEGOBatman3",
+      "cover": "/sdcard/Pictures/lego-batman-3-cover.jpg"
+    }
+  },
+  "verification": {
+    "status": "verified",
+    "performance": "59-60 FPS menus/intro",
+    "average_fps": "59-60",
+    "notes": "Nick Moody phone self-test, 2026-10-04. Epic copy (GameHub id 160159); the title is also sold on Steam (appid 313690). Verified for menus and intro only. Working path: copy the install with lego_copy.bat (Run program) from the Epic folder to /sdcard/Download/LEGOBatman3 (~8.3 GB duplicate; Epic install was about 8.07–8.67 GB; ask before large copies), then Library → Import → Local Game → LEGOBatman3.exe. Tile \"LEGOBatman3\" used these defaults: Proton 11.0-arm64x, DXVK 2.6-1-async, Fex_20260913, \"Game Presets\", Turnip v26.1.0_b8, 1280x720, PulseAudio. Menus/intro 59–60 FPS. Owner: \"game runs perfect now\". Title, planet, and button icons rendered correctly. Character textures were not re-checked in a cutscene after import. Local import is an offline candidate. Airplane mode was not tested. The old Epic tile still shows Start Extract.",
+    "known_issues": [
+      "Verified for menus and intro only; character textures were not re-checked in a cutscene after import",
+      "Airplane mode / offline play was not tested",
+      "Old Epic tile still shows Start Extract (files present, GameHub never marks that tile installed)"
+    ]
+  },
+  "provenance": {
+    "source_type": "self_test",
+    "source_url": "https://github.com/coolkidnick/moodygamer-recipes",
+    "source_id": "selftest-local-import-2026-10-04",
+    "author": "Nick Moody",
+    "captured_at": "2026-10-04",
+    "license_note": "Owner tests by Nick Moody on 2026-10-04. Distinct from EmuReady community listings for this title."
+  },
+  "tags": [
+    "local-game-import",
+    "epic",
+    "redmagic-11-air"
+  ]
+}

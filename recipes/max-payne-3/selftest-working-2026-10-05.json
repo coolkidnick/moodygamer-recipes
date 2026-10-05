@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "id": "max-payne-3.selftest-working-2026-10-05",
+  "slug": "max-payne-3",
+  "game": {
+    "title": "Max Payne 3",
+    "steam_appid": 204100,
+    "gamehub_id": 3828
+  },
+  "target": {
+    "app": "gamehub",
+    "package_name": "com.xiaoji.egggame",
+    "app_version_note": "6.3.1 as of the 2026-10-04 notes. The 2026-10-05 working confirmation did not restate the app version."
+  },
+  "device": {
+    "manufacturer": "REDMAGIC",
+    "model": "NX799J",
+    "soc": "Snapdragon 8 Elite",
+    "gpu": "Adreno 830",
+    "ram_gb": 16,
+    "android_version": "16",
+    "notes": "REDMAGIC 11 Air (SM8750). Same phone as the 2026-10-04 self-tests."
+  },
+  "settings": {
+    "wine_or_proton": "Proton 11.0-arm64x",
+    "dxvk_version": "2.6-1-async",
+    "cpu_translator": "Fex_20260913",
+    "gpu_driver": "Turnip v26.1.0_b6",
+    "extra": {
+      "settings_status": "unverified_mid_setup_logs",
+      "not_the_working_launch_stack": true,
+      "do_not_apply_as_working_stack": true,
+      "provisional_logged_stack": {
+        "wine_or_proton": "Proton 11.0-arm64x",
+        "cpu_translator": "Fex_20260913",
+        "gpu_driver": "Turnip v26.1.0_b6",
+        "dxvk": "DXVK 2.6-1-async"
+      },
+      "provisional_note": "These four values are the prior logged mid-setup stack. They are unverified against the working launch. They are not a confirmed final stack.",
+      "next_step": "Replace settings only from the next log_pcengine pull (WINEMU_LAUNCH_CONFIG block). Do not fill resolution, translator preset, audio, env, or launch args until that log records them."
+    }
+  },
+  "verification": {
+    "status": "verified",
+    "notes": "Nick Moody owner-confirmed Max Payne 3 WORKING in GameHub as of 2026-10-05. That confirmation is the launch, not a settings stack. Exact settings are TBD from the next log_pcengine pull. The settings in this file are provisional and unverified versus the working launch: Proton 11.0-arm64x, Fex_20260913, Turnip v26.1.0_b6, DXVK 2.6-1-async. Those values came from mid-setup logs, not from a launch-config block of the confirmed working session, and they are not the final working stack. Do not apply them as the working recipe. No resolution, FEX preset, audio driver, or other fields were recorded for this title; they are omitted on purpose. Steam appid 204100, GameHub id 3828. On 2026-10-04, setup was unfinished: a 4-step Steam install script (DirectX first, Rockstar Games Launcher later) left a black screen for about two minutes, then the Rockstar Games Launcher installer (Language select). Licence acceptance and Rockstar sign-in are manual. Airplane mode was not tested.",
+    "known_issues": [
+      "Provisional Proton / FEX / Turnip / DXVK values are mid-setup logs and are unverified against the working launch. They are not the confirmed final stack.",
+      "Exact working settings are unknown until the next log_pcengine pull.",
+      "Airplane mode was not tested. Steam Offline was switched on for this title on 2026-10-04; that is not an offline-play result."
+    ]
+  },
+  "provenance": {
+    "source_type": "self_test",
+    "source_url": "https://github.com/coolkidnick/moodygamer-recipes",
+    "source_id": "selftest-working-2026-10-05",
+    "author": "Nick Moody",
+    "captured_at": "2026-10-05",
+    "license_note": "Owner confirmation on 2026-10-05 that the game is working in GameHub. The settings block is an earlier mid-setup log, not the confirmed working stack. Distinct from any EmuReady community listing."
+  },
+  "tags": [
+    "steam",
+    "redmagic-11-air",
+    "provisional-settings",
+    "rockstar-launcher"
+  ]
+}
