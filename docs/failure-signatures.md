@@ -4,7 +4,7 @@ Patterns in GameHub's `log_pcengine_*.txt` and what they meant on 2026-10-04. Th
 
 Observed by Nick Moody on a REDMAGIC 11 Air (model NX799J, Snapdragon 8 Elite / SM8750, Adreno 830, 16 GB RAM, Android 16) running GameHub 6.3.1 (`com.xiaoji.egggame`). They describe that phone on that day. Do not treat a match as a universal fix, and do not invent a config from a signature alone.
 
-Airplane mode was not tested. Offline-related rows below are log patterns and the session's intended fix, not confirmed airplane-mode results.
+Airplane mode was not tested. Offline-related rows below are log patterns and the session's intended fix, not confirmed airplane-mode results. Legitimate offline paths are outlined in [`offline-readiness.md`](offline-readiness.md). Watch Dogs 2 stays blocked.
 
 ## Where to look
 
@@ -43,7 +43,7 @@ Useful config keys: `config.exePath`, `config.launchCommandLine` / `launchArgume
 | Texture scramble / checkerboard | Bad Proton/FEX combo on this SoC (not fixed by Turnip/DXVK A/B) | Prefer **Proton 11 + default Game Presets FEX** |
 | Compatible FEX: 14 FPS / 100% CPU | Too accurate/slow for this game | Custom + TSO safety switches instead |
 
-Steam Offline mode was switched on for some titles in this session and was **not** airplane-tested. Epic has no offline switch; local import was not airplane-tested either.
+Steam Offline mode was switched on for some titles in this session and was **not** airplane-tested. Epic has no offline switch; local import was not airplane-tested either. Rockstar Launcher and Ubisoft Connect offline modes are the official launcher paths after a manual online sign-in; neither was airplane-tested. See [`offline-readiness.md`](offline-readiness.md).
 
 ## Extra diagnostics that worked
 
