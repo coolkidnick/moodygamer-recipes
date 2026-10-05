@@ -22,6 +22,8 @@ schema/recipe.schema.json   JSON Schema (schema_version 1.0.0)
 recipes/<slug>/*.json       Sourced recipes only
 recipes/examples/           Placeholder example (status: example — never apply)
 scripts/validate.js         Node validator (no npm deps)
+tools/render_card.py        Portrait config-card generator (Pillow)
+cards/                      One 1080x1920 PNG per working recipe
 docs/research.md            Research notes + sources
 docs/failure-signatures.md  GameHub log patterns from owner self-tests (diagnoser)
 docs/offline-readiness.md   Legitimate offline paths (no cracks); airplane mode untested
@@ -60,6 +62,23 @@ This project targets **stock GameHub** (and later Winlator / GameNative). It is 
 4. Run `node scripts/validate.js` and open a PR.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Config cards
+
+`tools/render_card.py` writes one portrait PNG (1080x1920) per working recipe into `cards/`. Read it as a single phone screenshot. Sections follow the GameNative container tabs: General, Graphics, Emulation, Environment, Advanced.
+
+The card prints a value only when the recipe contains it. A missing or blank field says `not yet verified`. The emulator name comes from `target.app` and `target.package_name`. Nick's self-tests are GameHub (`com.xiaoji.egggame`). A card says GameNative only when the recipe app is `gamenative`.
+
+A recipe is working when `verification.status` is `verified` or `community` and either `verification.performance` is Perfect, Great, Playable, Ingame, or Launches, or the notes say the game runs. Files under `recipes/examples/` are skipped. Notes that describe a failed or blocked path are skipped too (the LEGO Batman 3 Batman-container self-test).
+
+Regenerate after a recipe change:
+
+```bash
+python3 -m pip install pillow
+python3 tools/render_card.py
+```
+
+CI runs `python3 tools/render_card.py --check`. That step does not render. It fails if a working recipe has no committed card, or if `cards/` contains a PNG that is not a working recipe.
 
 ## Licence
 
