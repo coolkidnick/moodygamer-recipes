@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0.0",
+  "id": "lego-batman-3-beyond-gotham.emuready-7adcd729",
+  "slug": "lego-batman-3-beyond-gotham",
+  "game": {
+    "title": "LEGO Batman 3: Beyond Gotham",
+    "steam_appid": 313690,
+    "emuready_game_id": "f2f9f09e-26b9-4f97-b6d5-6e610e9f2bf5",
+    "aliases": [
+      "LEGO\u00ae Batman\u2122 3: Beyond Gotham",
+      "Lego Batman 3"
+    ]
+  },
+  "target": {
+    "app": "gamehub",
+    "package_name": "com.xiaoji.egggame",
+    "app_version_min": "5.3.5",
+    "app_version_note": "Reporter used Emulator Version = 5.3.5; Using GameHub Lite = False"
+  },
+  "device": {
+    "manufacturer": "Vivo",
+    "model": "iQOO Neo 8",
+    "soc": "Snapdragon 8+ Gen 1"
+  },
+  "settings": {
+    "wine_or_proton": "proton10.0-arm64x-2",
+    "dx_wrapper": "DXVK",
+    "dxvk_version": "dxvk-1.10.3-async",
+    "vkd3d_version": "vkd3d-2.12",
+    "cpu_translator": "Fex-20260103",
+    "translator_preset": "Game Preset",
+    "gpu_driver": "turnip_v26.1.0_R3",
+    "resolution": "1280x720",
+    "surface_format": "RGBA8",
+    "audio_driver": "Pulse",
+    "cpu_core_limit": "No Limit",
+    "vram_limit": "No Limit",
+    "env_vars": "",
+    "launch_args": "",
+    "native_rendering_plus": "Auto",
+    "dinput_library": "Prefer Native",
+    "steam_client_version": "steam_9866233",
+    "offline_mode": false,
+    "auto_sync_cloud_saves": true,
+    "steam_input": false,
+    "disable_graphics_enhancement_plugin": false,
+    "skip_audio_video_decode": false,
+    "using_gamehub_lite": false
+  },
+  "verification": {
+    "status": "community",
+    "performance": "Great",
+    "average_fps": "30+",
+    "notes": "Game Source = Steam; Game Size = 7.32 G. Author linked a YouTube clip on the listing.",
+    "known_issues": []
+  },
+  "provenance": {
+    "source_type": "emuready",
+    "source_url": "https://www.emuready.com/listings/7adcd729-eae1-4a8d-9b27-d139eda5d1af",
+    "source_id": "7adcd729-eae1-4a8d-9b27-d139eda5d1af",
+    "author": "gavoguzman",
+    "captured_at": "2026-03-12",
+    "license_note": "Settings transcribed from a public EmuReady listing; cite the listing URL. Recipe text here is CC-BY-4.0."
+  },
+  "tags": [
+    "lego",
+    "batman",
+    "steam",
+    "snapdragon-8-plus-gen-1"
+  ]
+}

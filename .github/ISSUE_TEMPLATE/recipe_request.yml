@@ -1,0 +1,41 @@
+name: Recipe request
+description: Ask for a sourced recipe for a game / device / host app
+title: "[Request] "
+labels: ["recipe-request"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Game title
+    validations:
+      required: true
+  - type: input
+    id: steam
+    attributes:
+      label: Steam AppID (if any)
+  - type: dropdown
+    id: host
+    attributes:
+      label: Target app
+      options: [gamehub, gamehub_lite, winlator, gamenative, other]
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device / SoC / GPU
+      placeholder: e.g. Samsung Galaxy S26 Ultra / Snapdragon (Adreno)
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: Existing public reports (EmuReady, Reddit, BannerHub, …)
+      description: Paste URLs. Do not invent settings here — only request research.
+  - type: checkboxes
+    id: legal
+    attributes:
+      label: Ownership
+      options:
+        - label: I legally own this game and only want configuration for my own copies.
+          required: true

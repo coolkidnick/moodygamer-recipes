@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0.0",
+  "id": "lego-batman-3-beyond-gotham.emuready-a919806b",
+  "slug": "lego-batman-3-beyond-gotham",
+  "game": {
+    "title": "LEGO Batman 3: Beyond Gotham",
+    "steam_appid": 313690,
+    "emuready_game_id": "f2f9f09e-26b9-4f97-b6d5-6e610e9f2bf5",
+    "aliases": [
+      "LEGO\u00ae Batman\u2122 3: Beyond Gotham",
+      "Lego Batman 3"
+    ]
+  },
+  "target": {
+    "app": "gamehub",
+    "package_name": "com.xiaoji.egggame",
+    "app_version_min": "5.3.5",
+    "app_version_note": "Reporter used Emulator Version = v5.3.5; Using GameHub Lite = False"
+  },
+  "device": {
+    "manufacturer": "AYN",
+    "model": "Thor Max",
+    "soc": "Snapdragon 8 Gen 2",
+    "gpu": "Adreno 740"
+  },
+  "settings": {
+    "wine_or_proton": "proton10.0-arm64x-2",
+    "dx_wrapper": "DXVK",
+    "dxvk_version": "dxvk-2.3.1-async",
+    "vkd3d_version": "vkd3d-2.12",
+    "cpu_translator": "Fex_20250910",
+    "translator_preset": "Game Preset",
+    "gpu_driver": "turnip_v26.1.0_R4",
+    "resolution": "1280x720",
+    "surface_format": "RGBA8",
+    "audio_driver": "Pulse",
+    "cpu_core_limit": "No Limit",
+    "vram_limit": "No Limit",
+    "env_vars": "",
+    "launch_args": "",
+    "native_rendering_plus": "Disabled",
+    "dinput_library": "Prefer Native",
+    "steam_client_version": "steam_9866233",
+    "offline_mode": false,
+    "auto_sync_cloud_saves": true,
+    "steam_input": false,
+    "disable_graphics_enhancement_plugin": false,
+    "skip_audio_video_decode": false,
+    "using_gamehub_lite": false
+  },
+  "verification": {
+    "status": "community",
+    "performance": "Great",
+    "average_fps": "55",
+    "notes": "Getting some slight dips in fps but no issues otherwise. Game Source = Steam; Game Size = 7.2gb.",
+    "known_issues": [
+      "Slight FPS dips reported by author"
+    ]
+  },
+  "provenance": {
+    "source_type": "emuready",
+    "source_url": "https://www.emuready.com/listings/a919806b-a624-4e46-9a46-c2edd6def6de",
+    "source_id": "a919806b-a624-4e46-9a46-c2edd6def6de",
+    "author": "mrre2025",
+    "captured_at": "2026-04-19",
+    "license_note": "Settings transcribed from a public EmuReady listing; cite the listing URL. EmuReady code is GPL-3.0-or-later; ToS applies to the service. Recipe text here is CC-BY-4.0."
+  },
+  "tags": [
+    "lego",
+    "batman",
+    "steam",
+    "snapdragon-8-gen-2",
+    "adreno-740"
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/coolkidnick/moodygamer-recipes/main/schema/recipe.schema.json",
+  "title": "MoodyGamer Recipe",
+  "description": "A sourced, per-game configuration recipe for GameHub, Winlator, GameNative, or other Android PC-emulation hosts. Never invent values; every settings entry must come from a cited source.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "slug",
+    "game",
+    "target",
+    "settings",
+    "verification",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "Recipe schema version."
+    },
+    "id": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 128,
+      "pattern": "^[a-z0-9][a-z0-9._-]*$",
+      "description": "Stable recipe id, unique within the repo (e.g. lego-batman-3-beyond-gotham.emuready-a919806b)."
+    },
+    "slug": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 96,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "description": "Game directory slug under recipes/."
+    },
+    "game": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "exe": {
+          "type": "string",
+          "description": "Windows executable basename or relative path (e.g. LEGOBatman3.exe)."
+        },
+        "steam_appid": {
+          "type": ["integer", "string"],
+          "description": "Steam AppID when known."
+        },
+        "gog_id": {
+          "type": ["integer", "string"],
+          "description": "GOG product id when known."
+        },
+        "gamehub_id": {
+          "type": ["integer", "string"],
+          "description": "GameHub internal game id when known."
+        },
+        "emuready_game_id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "EmuReady game UUID when known."
+        },
+        "aliases": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Alternate titles used for lookup."
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["app"],
+      "properties": {
+        "app": {
+          "type": "string",
+          "enum": [
+            "gamehub",
+            "gamehub_lite",
+            "bannerhub",
+            "winlator",
+            "winlator_frost",
+            "winlator_glibc",
+            "winlator_cmod",
+            "winlator_ajay",
+            "gamenative",
+            "mobox",
+            "other"
+          ]
+        },
+        "package_name": {
+          "type": "string",
+          "description": "Android package name (e.g. com.xiaoji.egggame, gamehub.lite, app.gamenative)."
+        },
+        "app_version_min": { "type": "string" },
+        "app_version_max": { "type": "string" },
+        "app_version_note": { "type": "string" }
+      }
+    },
+    "device": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "manufacturer": { "type": "string" },
+        "model": { "type": "string" },
+        "soc": { "type": "string" },
+        "gpu": { "type": "string" },
+        "ram_gb": { "type": ["number", "integer"] },
+        "android_version": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "settings": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Host-agnostic settings informed by GameHub / Winlator / GameNative / EmuReady fields. Omit unknowns; do not invent.",
+      "properties": {
+        "wine_or_proton": {
+          "type": "string",
+          "description": "Compatibility layer / container (e.g. proton10.0-arm64x-2)."
+        },
+        "dx_wrapper": {
+          "type": "string",
+          "description": "DX wrapper mode (WineD3D, DXVK, VKD3D, CNC DDraw, Other)."
+        },
+        "dxvk_version": { "type": "string" },
+        "vkd3d_version": { "type": "string" },
+        "cpu_translator": {
+          "type": "string",
+          "description": "Box64 / FEX / FEXCore build name (e.g. Fex_20250910)."
+        },
+        "translator_preset": {
+          "type": "string",
+          "description": "Named translation preset (Stability, Compatibility, Intermediate, Performance, Extreme, Game Preset, Other/Custom)."
+        },
+        "box64_preset": {
+          "type": "string",
+          "description": "Winlator-style Box64 preset name when applicable."
+        },
+        "fex_preset": {
+          "type": "string",
+          "description": "Winlator-style FEX/FEXCore preset when applicable."
+        },
+        "gpu_driver": {
+          "type": "string",
+          "description": "GPU driver package (e.g. turnip_v26.1.0_R4, system)."
+        },
+        "resolution": {
+          "type": "string",
+          "description": "Game or container resolution (e.g. 1280x720)."
+        },
+        "surface_format": {
+          "type": "string",
+          "enum": ["RGBA8", "BGRA8"]
+        },
+        "audio_driver": {
+          "type": "string",
+          "description": "ALSA, Pulse, or Other."
+        },
+        "cpu_core_limit": {
+          "type": "string",
+          "description": "No Limit, or N Core as reported by GameHub."
+        },
+        "vram_limit": {
+          "type": "string",
+          "description": "No Limit, or size string (e.g. 4 GB)."
+        },
+        "env_vars": {
+          "type": "string",
+          "description": "Environment variable string exactly as reported (e.g. TU_DEBUG=\"noconform\")."
+        },
+        "launch_args": {
+          "type": "string",
+          "description": "Command-line / start params."
+        },
+        "native_rendering_plus": {
+          "type": "string",
+          "enum": ["Auto", "Disabled", "Force Enabled"]
+        },
+        "dinput_library": {
+          "type": "string",
+          "enum": ["Prefer Native", "Prefer Builtin", "Disabled"]
+        },
+        "steam_client_version": { "type": "string" },
+        "offline_mode": { "type": "boolean" },
+        "auto_sync_cloud_saves": { "type": "boolean" },
+        "steam_input": { "type": "boolean" },
+        "disable_graphics_enhancement_plugin": { "type": "boolean" },
+        "skip_audio_video_decode": { "type": "boolean" },
+        "using_gamehub_lite": { "type": "boolean" },
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "type": { "type": "string" },
+              "url": { "type": "string", "format": "uri" }
+            }
+          }
+        },
+        "raw_host_keys": {
+          "type": "object",
+          "description": "Optional raw SharedPreferences / host keys (e.g. GameHub pc_ls_* ) when exporting from BannerHub or device dumps. Values must remain as sourced.",
+          "additionalProperties": true
+        },
+        "extra": {
+          "type": "object",
+          "description": "Additional host-specific fields not yet mapped (Winlator .desktop Extra Data, GameNative container JSON keys, etc.).",
+          "additionalProperties": true
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["untested", "community", "verified", "example"],
+          "description": "example = placeholder only, never apply. community = cited public report. verified = independently confirmed on listed device."
+        },
+        "performance": {
+          "type": "string",
+          "description": "Reporter performance label (Perfect, Great, Playable, etc.)."
+        },
+        "average_fps": { "type": "string" },
+        "notes": { "type": "string" },
+        "known_issues": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_type", "source_url", "captured_at"],
+      "properties": {
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "emuready",
+            "bannerhub",
+            "gamenative",
+            "reddit",
+            "github",
+            "spreadsheet",
+            "self_test",
+            "other"
+          ]
+        },
+        "source_url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Canonical public URL for the report or config."
+        },
+        "source_id": {
+          "type": "string",
+          "description": "External id (EmuReady listing UUID, BannerHub filename, etc.)."
+        },
+        "author": { "type": "string" },
+        "captured_at": {
+          "type": "string",
+          "description": "ISO-8601 date when the source was observed or the report was created."
+        },
+        "license_note": {
+          "type": "string",
+          "description": "Any licence or ToS caveat for reuse."
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

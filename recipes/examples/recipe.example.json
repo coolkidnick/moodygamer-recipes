@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "id": "example-game.placeholder",
+  "slug": "example-game",
+  "game": {
+    "title": "Example Game (PLACEHOLDER \u2014 NOT A REAL CONFIG)",
+    "exe": "ExampleGame.exe",
+    "steam_appid": 0,
+    "aliases": [
+      "Do Not Apply"
+    ]
+  },
+  "target": {
+    "app": "gamehub",
+    "package_name": "com.xiaoji.egggame",
+    "app_version_min": "0.0.0",
+    "app_version_max": "0.0.0",
+    "app_version_note": "EXAMPLE ONLY \u2014 fake values for schema demos."
+  },
+  "device": {
+    "manufacturer": "ExampleCo",
+    "model": "Example Phone",
+    "soc": "Example SoC",
+    "gpu": "Example GPU"
+  },
+  "settings": {
+    "wine_or_proton": "EXAMPLE-proton-do-not-use",
+    "dx_wrapper": "DXVK",
+    "dxvk_version": "EXAMPLE-dxvk",
+    "vkd3d_version": "EXAMPLE-vkd3d",
+    "cpu_translator": "EXAMPLE-fex",
+    "translator_preset": "Game Preset",
+    "gpu_driver": "EXAMPLE-turnip",
+    "resolution": "1280x720",
+    "audio_driver": "Pulse",
+    "env_vars": "EXAMPLE_VAR=1",
+    "launch_args": ""
+  },
+  "verification": {
+    "status": "example",
+    "performance": "n/a",
+    "notes": "Fake placeholder. Never apply. Copy this file only as a structural template when contributing a real sourced recipe.",
+    "known_issues": [
+      "This is not a real game config"
+    ]
+  },
+  "provenance": {
+    "source_type": "other",
+    "source_url": "https://github.com/coolkidnick/moodygamer-recipes/blob/main/recipes/examples/recipe.example.json",
+    "source_id": "example",
+    "author": "moodygamer-recipes",
+    "captured_at": "2026-10-05",
+    "license_note": "Example only."
+  },
+  "tags": [
+    "example",
+    "do-not-apply"
+  ]
+}

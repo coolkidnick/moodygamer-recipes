@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "id": "lego-batman-3-beyond-gotham.emuready-1bea2895",
+  "slug": "lego-batman-3-beyond-gotham",
+  "game": {
+    "title": "LEGO Batman 3: Beyond Gotham",
+    "steam_appid": 313690,
+    "emuready_game_id": "f2f9f09e-26b9-4f97-b6d5-6e610e9f2bf5",
+    "aliases": [
+      "LEGO\u00ae Batman\u2122 3: Beyond Gotham",
+      "Lego Batman 3"
+    ]
+  },
+  "target": {
+    "app": "gamehub_lite",
+    "package_name": "gamehub.lite",
+    "app_version_min": "5.1.3",
+    "app_version_note": "Reporter used Emulator Version = v5.1.3; Using GameHub Lite = True"
+  },
+  "device": {
+    "manufacturer": "AYN",
+    "model": "Thor Max",
+    "soc": "Snapdragon 8 Gen 2",
+    "gpu": "Adreno 740"
+  },
+  "settings": {
+    "wine_or_proton": "proton10.0-arm64x-2",
+    "dx_wrapper": "DXVK",
+    "dxvk_version": "dxvk-2.7.1-1-async",
+    "vkd3d_version": "vkd3d-2.13",
+    "cpu_translator": "Fex_20260103",
+    "translator_preset": "Extreme",
+    "gpu_driver": "turnip_v26.0.0_R8",
+    "resolution": "1280x720",
+    "surface_format": "BGRA8",
+    "audio_driver": "Pulse",
+    "cpu_core_limit": "7 Core",
+    "vram_limit": "4 GB",
+    "env_vars": "",
+    "launch_args": "",
+    "native_rendering_plus": "Auto",
+    "dinput_library": "Prefer Native",
+    "steam_client_version": "steam_9866233",
+    "offline_mode": false,
+    "auto_sync_cloud_saves": true,
+    "steam_input": false,
+    "disable_graphics_enhancement_plugin": false,
+    "skip_audio_video_decode": false,
+    "using_gamehub_lite": true
+  },
+  "verification": {
+    "status": "community",
+    "performance": "Great",
+    "average_fps": "50",
+    "notes": "Game Source = Steam. Listing comment discusses Wallpaper Engine backgrounds (unrelated to core gameplay).",
+    "known_issues": []
+  },
+  "provenance": {
+    "source_type": "emuready",
+    "source_url": "https://www.emuready.com/listings/1bea2895-f278-4cbb-aa02-5276fdfbd05c",
+    "source_id": "1bea2895-f278-4cbb-aa02-5276fdfbd05c",
+    "author": "leat",
+    "captured_at": "2026-02-08",
+    "license_note": "Settings transcribed from a public EmuReady listing; cite the listing URL. Recipe text here is CC-BY-4.0."
+  },
+  "tags": [
+    "lego",
+    "batman",
+    "steam",
+    "gamehub-lite",
+    "snapdragon-8-gen-2"
+  ]
+}

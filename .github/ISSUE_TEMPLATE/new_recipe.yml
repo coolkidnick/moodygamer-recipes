@@ -1,0 +1,46 @@
+name: New recipe
+description: Propose adding a sourced recipe (or open a PR)
+title: "[Recipe] "
+labels: ["new-recipe"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Game title
+    validations:
+      required: true
+  - type: dropdown
+    id: host
+    attributes:
+      label: Target app
+      options: [gamehub, gamehub_lite, winlator, gamenative, other]
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source URL (EmuReady listing, Reddit post with explicit settings, etc.)
+    validations:
+      required: true
+  - type: textarea
+    id: settings
+    attributes:
+      label: Settings exactly as shown in the source
+      description: Copy fields; do not invent. Prefer opening a PR with a JSON file under recipes/<slug>/.
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device / SoC / GPU used in the source
+    validations:
+      required: true
+  - type: checkboxes
+    id: affirm
+    attributes:
+      label: Affirmations
+      options:
+        - label: These values appear verbatim (or clearly mapped) in the cited public source.
+          required: true
+        - label: I did not invent DXVK/Proton/driver versions.
+          required: true
