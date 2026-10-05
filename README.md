@@ -50,7 +50,7 @@ This project targets **stock GameHub** (and later Winlator / GameNative). It is 
 
 `docs/failure-signatures.md` lists patterns in GameHub `log_pcengine_*.txt` from the 2026-10-04 REDMAGIC 11 Air / GameHub 6.3.1 tests. The `mg` diagnoser should start there. A matching line is an observation from that phone, not a licence to invent settings.
 
-`docs/offline-readiness.md` lists legitimate offline paths only: Steam Offline with the full Steam client, Epic local import, Rockstar Launcher offline, and Ubisoft Connect offline. Watch Dogs 2 stays blocked. Airplane mode was not tested.
+`docs/offline-readiness.md` lists legitimate offline paths only: Steam Offline with the full Steam client, Epic local import, Rockstar Launcher offline, and Ubisoft Connect offline. A per-game table from the 2026-10-05 research pass is included. Max Payne 3 is working. Watch Dogs 2 stays blocked and parked. Airplane mode was not tested.
 
 ## How to contribute a recipe
 
