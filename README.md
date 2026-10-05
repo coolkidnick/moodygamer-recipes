@@ -63,3 +63,7 @@ Upstream reports remain subject to their own terms (e.g. [EmuReady ToS](https://
 
 - Research: [`docs/research.md`](docs/research.md)
 - `mg` engine: separate teammate / repo (not here)
+
+## Inspired By
+- User: rhythmerc/ emu-hub
+- User: utkarshdalal/ GameNative
