@@ -26,20 +26,30 @@
     "notes": "REDMAGIC 11 Air (SM8750)."
   },
   "settings": {
-    "wine_or_proton": "proton11.0-arm64x",
+    "wine_or_proton": "Proton 11.0-arm64x",
     "dxvk_version": "2.6-1-async",
     "cpu_translator": "Fex_20260913",
-    "translator_preset": "Game Preset",
-    "gpu_driver": "turnip_v26.1.0_b8"
+    "translator_preset": "Game Presets",
+    "gpu_driver": "Turnip v26.1.0_b8",
+    "resolution": "1280x720",
+    "audio_driver": "PulseAudio",
+    "extra": {
+      "import_exe": "LEGOBatman3.exe",
+      "copy_via": "lego_copy.bat",
+      "copy_from": "Z:\\data\\user\\0\\com.xiaoji.egggame\\files\\xj_winemu\\xj_install\\game\\lego-batman-3\\home",
+      "copy_to": "/sdcard/Download/LEGOBatman3",
+      "cover": "/sdcard/Pictures/lego-batman-3-cover.jpg"
+    }
   },
   "verification": {
     "status": "verified",
-    "performance": "Passed",
-    "average_fps": "60",
-    "notes": "Nick Moody phone self-test, 2026-10-04. Epic copy (GameHub id 160159); the title is also sold on Steam (appid 313690). Working path is Library → Import → Local Game after copying the install to /sdcard/Download/LEGOBatman3 (~8.3 GB duplicate of the 8.67 GB Epic install; ask before large copies). The new tile \"LEGOBatman3\" launched with GameHub defaults reported as Proton 11.0-arm64x, DXVK 2.6-1-async, Fex_20260913, Game Presets, Turnip v26.1.0_b8. Intro rendering ~60 FPS, first frame in 5 s, Passed. Gameplay, saving, and controller were not tested. Texture scrambling was not present on this Proton 11 defaults path (menu, planet, and button icons rendered correctly; characters not yet checked). Texture scrambling was present on the Proton 10 + custom FEX path in Batman's container. No environment variables were recorded for this tile.",
+    "performance": "59-60 FPS menus/intro",
+    "average_fps": "59-60",
+    "notes": "Nick Moody phone self-test, 2026-10-04. Epic copy (GameHub id 160159); the title is also sold on Steam (appid 313690). Verified for menus and intro only. Working path: copy the install with lego_copy.bat (Run program) from the Epic folder to /sdcard/Download/LEGOBatman3 (~8.3 GB duplicate; Epic install was about 8.07–8.67 GB; ask before large copies), then Library → Import → Local Game → LEGOBatman3.exe. Tile \"LEGOBatman3\" used these defaults: Proton 11.0-arm64x, DXVK 2.6-1-async, Fex_20260913, \"Game Presets\", Turnip v26.1.0_b8, 1280x720, PulseAudio. Menus/intro 59–60 FPS. Owner: \"game runs perfect now\". Title, planet, and button icons rendered correctly. Character textures were not re-checked in a cutscene after import. Local import is an offline candidate. Airplane mode was not tested. The old Epic tile still shows Start Extract.",
     "known_issues": [
-      "Gameplay, saving, and controller were not tested",
-      "Characters were not checked for texture scrambling"
+      "Verified for menus and intro only; character textures were not re-checked in a cutscene after import",
+      "Airplane mode / offline play was not tested",
+      "Old Epic tile still shows Start Extract (files present, GameHub never marks that tile installed)"
     ]
   },
   "provenance": {

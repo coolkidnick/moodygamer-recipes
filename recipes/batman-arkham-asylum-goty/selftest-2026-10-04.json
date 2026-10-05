@@ -23,11 +23,16 @@
   },
   "settings": {
     "wine_or_proton": "proton10.0-arm64x-2",
-    "dxvk_version": "2.4.1-async",
+    "dxvk_version": "dxvk-v2.4.1-async",
+    "vkd3d_version": "vkd3d-proton-3.0.1",
+    "cpu_translator": "Fex-20260103",
     "translator_preset": "Custom",
     "gpu_driver": "turnip_v26.1.0_b8",
     "resolution": "1280x720",
-    "env_vars": "DXVK_LOG_PATH=D: DXVK_LOG_LEVEL=info",
+    "audio_driver": "Pulse",
+    "cpu_core_limit": "7-core limit",
+    "env_vars": "DXVK_LOG_PATH=D: DXVK_LOG_LEVEL=info PULSE_LATENCY_MSEC=45",
+    "dinput_library": "Prefer Native",
     "components": [
       {
         "name": "physx 1.0.1"
@@ -38,38 +43,59 @@
       "launch_via_aliases": [
         "0run.bat"
       ],
-      "launch_from": "D: inside the virtual desktop",
+      "launch_from": "virtual desktop → (D:)",
       "launches_exe": "ShippingPC-BmGame.exe",
-      "do_not_launch": "Binaries\\Batman.exe",
-      "fex_custom_enabled": [
-        "Vector TSO",
-        "Memcpy TSO",
-        "Half Barrier"
-      ],
-      "fex_custom_note": "Custom preset: original values plus Vector TSO, Memcpy TSO, and Half Barrier turned on. The original custom values were not recorded separately. No FEX build name was recorded.",
+      "stdout_redirect": "D:\\bm_wine.txt",
+      "do_not_launch": "Binaries/Batman.exe",
+      "dll_overrides": "dinput=PreferNative, dinput8=PreferNative",
+      "gpu_driver_file": "libvulkan_freedreno.so",
+      "dxvk_gpu_string": "Turnip Adreno (TM) 830",
+      "mesa_driver": "26.0.99",
+      "physx_dll": "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common\\PhysXLoader.dll",
+      "cpu_core_limit_note": "7-core limit from the user's pre-session tries; kept.",
+      "env_note": "DXVK_LOG_LEVEL was warn and was set to info. PULSE_LATENCY_MSEC=45 was restored after a stray 45D: was typed. 45D: is not a setting.",
+      "fex_config": {
+        "path": "Fex-20260103",
+        "preset": "Custom",
+        "tsoEnabled": true,
+        "vectorTSOEnabled": true,
+        "memcpySetTSOEnabled": true,
+        "halfBarrierTSOEnabled": true,
+        "multiblock": true,
+        "x87ReducedPrecision": true,
+        "maxInst": 5000,
+        "smallTSCScale": true,
+        "volatileMetadata": true,
+        "log_quote": "vectorTSOEnabled=true, memcpySetTSOEnabled=true, halfBarrierTSOEnabled=true, multiblock=true, maxInst=5000, x87ReducedPrecision=true, smallTSCScale=true, volatileMetadata=true"
+      },
+      "fex_custom_note": "Final Custom preset: TSO on, Vector TSO on, Memcpy TSO on, Half Barrier on, Multiblock on, X87 reduced precision on, MaxInst 5000, Small TSC scale on, Volatile metadata on. The quoted log snippet lists every flag except a separate tsoEnabled token; the session summary lists TSO on as its own switch.",
+      "bmengine_ini_path": "Documents\\Square Enix\\Batman Arkham Asylum GOTY\\BmGame\\Config\\BmEngine.ini",
       "bmengine_ini": {
         "AmbientOcclusion": "False",
         "FogVolumes": "False",
         "DepthOfField": "False",
         "MotionBlur": "False",
         "Distortion": "False",
+        "Bloom": "True",
+        "UseHighQualityBloom": "True",
         "ResX": 1280,
         "ResY": 720
       },
-      "bmengine_ini_note": "Original backed up as BmEngine.ini.bak beside the file and in scripts/batman-config/."
+      "bmengine_ini_note": "ResX/ResY were 1680x1050 and were set to 1280x720. Bloom and UseHighQualityBloom were left True. Backup .bak. Applied via 1fix.bat, with optional auto-apply in 0run.bat from D:\\BmEngine_new.ini."
     }
   },
   "verification": {
     "status": "verified",
-    "performance": "55-60 FPS at menu and opening",
+    "performance": "menu/intro 55-60 FPS",
     "average_fps": "55-60",
-    "notes": "Nick Moody phone self-test, 2026-10-04. Epic copy (GameHub id 156707). physx component 1.0.1 is required: without it the real game reported a General protection fault. Launch ShippingPC-BmGame.exe via bm_run.bat (same as 0run.bat) from D: inside the virtual desktop, not the Epic starter Batman.exe. BmEngine.ini: AmbientOcclusion, FogVolumes, DepthOfField, MotionBlur, and Distortion set to False; ResX/ResY 1280x720. FEX translation Custom, original values plus Vector TSO, Memcpy TSO, and Half Barrier turned on. Env: DXVK_LOG_PATH=D: and DXVK_LOG_LEVEL=info (was warn). Container graphics stack recorded the same day, when LEGO Batman 3 was launched from this container: Proton 10.0-arm64x-2, DXVK 2.4.1-async, Turnip v26.1.0_b8. Menu and opening ran at 55–60 FPS. ProtonDB leads (newer Proton general-protection faults, Proton 8, PhysX effects off, -nolauncher) were not tried. GameHub has proton9.0-arm64x-3 installed; it was not the tested container.",
+    "notes": "Nick Moody phone self-test, 2026-10-04. Epic copy (GameHub id 156707), not Steam. Verified with issues. physx 1.0.1 is required (the component list also showed PhysX-9.14.0702; that build was not the installed fix). Without PhysX, ShippingPC-BmGame.exe reported General protection fault! in kernelbase.dll. The game ships PhysXCore/Extensions DLLs but not PhysXLoader.dll. Launch via bm_run.bat / 0run.bat from (D:) in the virtual desktop. The library tile still launches Binaries/Batman.exe (106 KB starter) and returns after about 4 s: ExitCallback#1 returnCode=0, reason=RuntimeExited, lastFps=null, about 3915 ms. Menu/intro 55–60 FPS after PhysX and the direct exe. After Vector TSO, Memcpy TSO, and Half Barrier: menu 60 FPS, CPU 43%, about 51°C. Proton 11 was not tried. ProtonDB leads (Proton 8, -nolauncher, in-game PhysX off) were not tried. Airplane mode was not tested.",
     "known_issues": [
-      "Blocky/checkerboard shading on the menu still present",
-      "Crashed once after about 4 minutes: Assertion failed: appUncompressMemory(...) UnAsyncWork.cpp line 170. Vector TSO, Memcpy TSO, and Half Barrier were turned on in response; not yet confirmed fixed",
-      "Epic starter Binaries\\Batman.exe exits in about 4 seconds with code 0 (opens BmLauncher.exe and exits). GameHub then closes the container. The library tile still does this",
-      "Wide static band across the screen in gameplay before the BmEngine.ini effects were turned off; gameplay not re-checked after that change",
-      "FEX preset Compatible: 14 FPS, CPU 100%, stuttering audio. Too slow. Not the applied preset"
+      "Blocky/checkerboard shading on the menu (moon/title) remains. Likely the same Proton 10 / custom FEX issue as LEGO Batman 3; Proton 11 was not tried",
+      "Crashed once after about 4 minutes: Assertion failed: appUncompressMemory(...) UnAsyncWork.cpp line 170. TSO switches were applied afterward; not confirmed fixed in longer play",
+      "Epic starter Binaries/Batman.exe exits in about 4 seconds with code 0. The library tile still does this",
+      "Wide static band in gameplay before the five BmEngine.ini effects were set False; gameplay was not re-checked after the patch",
+      "FEX preset Compatible: 14 FPS, CPU 100%, about 76°C, stuttering audio. Too slow. Not the applied preset",
+      "After the LEGO texture A/B, this container was left on turnip_v26.1.0_b6, Fex_20260913, and dxvk-2.3.1-async. That trial stack was not tested for Batman. This recipe records the stack that ran, not the leftover trial stack"
     ]
   },
   "provenance": {

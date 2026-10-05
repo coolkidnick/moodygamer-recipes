@@ -4,6 +4,8 @@ Patterns in GameHub's `log_pcengine_*.txt` and what they meant on 2026-10-04. Th
 
 Observed by Nick Moody on a REDMAGIC 11 Air (model NX799J, Snapdragon 8 Elite / SM8750, Adreno 830, 16 GB RAM, Android 16) running GameHub 6.3.1 (`com.xiaoji.egggame`). They describe that phone on that day. Do not treat a match as a universal fix, and do not invent a config from a signature alone.
 
+Airplane mode was not tested. Offline-related rows below are log patterns and the session's intended fix, not confirmed airplane-mode results.
+
 ## Where to look
 
 Logs readable from the PC:
@@ -17,22 +19,31 @@ Each launch writes a block between `WINEMU_LAUNCH_CONFIG_BEGIN` and `WINEMU_LAUN
 
 `pc模拟器游戏埋点-启动 <gameId> true 200 <exe path>`
 
-Useful config keys: `config.exePath`, `config.launchCommandLine`, `baseContainer.name`, `config.fexConfig`, `config.gpuDriver`, `resolvedDxvk`, `config.steamAppId`, `wineData.sourceType` (1 = Steam, 2 = Epic).
+Useful config keys: `config.exePath`, `config.launchCommandLine` / `launchArguments`, `baseContainer.name`, `config.fexConfig`, `config.gpuDriver`, `resolvedDxvk`, `resolvedVkd3d`, `config.steamAppId`, `wineData.sourceType` (1 = Steam, 2 = Epic), `wineData.gameId`, `wineData.isLaunchDesktop`, `config.resolution`, `config.envVars`, `config.dllOverrides`, `config.audioDriver`.
 
-`config.launchCommandLine` can contain an Epic `-AUTH_PASSWORD=` exchange code. Strip it before showing or saving output.
+`isLaunchDesktop=true` with `exePath=explorer.exe` is a virtual desktop session.
+
+`config.launchCommandLine` can contain an Epic `-AUTH_PASSWORD=` exchange code. Also redact `epicuserid=` and Steam account names or tokens before showing or saving output.
 
 ## Signatures
 
-| Log pattern | Meaning | Fix |
+| Log / symptom | Meaning | Fix |
 |---|---|---|
-| `ExitCallback#1 returnCode=0` within about 5 s, `reason=RuntimeExited`, `lastFps=null`, Epic source | Launch program is a starter that hands off and exits; GameHub closes the container | Launch the real game exe directly with a helper `.bat` |
-| `ExitCallback#1 returnCode=1` within about 5 s, `reason=RuntimeFailed`, exe is `UplayLaunch.exe` | Ubisoft Connect not installed in the container | Install Ubisoft Connect via Run program |
-| `SteamStatusCallback ... install_script_start` / `install_script_progress`, then `ExitWineActivityConfirm` and `reason=UserCancelled` under about 2 min | First-run Steam setup was still running when the user closed it | Relaunch and wait; black screen for about 2 minutes is normal |
-| `result=Failed(reason=NoFirstPresent, durationMs=180031)` | Nothing drew a frame in 3 minutes: game hung, or a launcher is sitting on screen | Check the process list (side menu → Performance → Process Manager) |
-| Game's own box: `General protection fault!` in `kernelbase.dll` at start (Unreal Engine 3) | PhysX system software missing, or graphics layer failed to start | Install `physx` component; check DXVK log |
-| Game output: `terminate called after throwing an instance of 'dxvk::DxvkError'`, DXVK log stops before listing a GPU | Vulkan gave DXVK no usable device in that launch | Seen only when started via Run program at first; worked when started from the virtual desktop |
-| Game's own box: `Assertion failed: appUncompressMemory(...)` | Background data unpack gave a wrong result: aggressive CPU translation, or a damaged file | Turn on Vector TSO, Memcpy TSO, Half Barrier; if same spot every time, verify files |
-| Process list shows the game exe at about 10 MB memory, CPU 0% | Game stalled at startup (anti-cheat or copy protection suspected) | No fix found yet |
+| `ExitCallback returnCode=0` within ~5 s, `RuntimeExited`, `lastFps=null`, Epic | Starter exe exits; GameHub closes container | Launch real exe via `.bat` from virtual desktop (or change install) |
+| `ExitCallback returnCode=1`, `RuntimeFailed`, `UplayLaunch.exe` | Ubisoft Connect missing | Install UC via Run program (manual licence/sign-in) |
+| `install_script_start/progress` then `UserCancelled` under ~2 min | First-run Steam setup interrupted | Relaunch; wait ~2 min on black screen |
+| `NoFirstPresent` / `durationMs≈180000` | Nothing drew for 3 min | Process Manager; may be hung launcher |
+| `General protection fault!` … `ShippingPC-BmGame.exe` | PhysX system software missing (UE3) | Install `physx` component |
+| `dxvk::DxvkError` / Vulkan 1.1 instance fail via Run program | No usable Vulkan on that launch path | Use virtual desktop or tile, not Run program |
+| `appUncompressMemory` UnAsyncWork.cpp:170 | Bad unpack under aggressive FEX / corrupt file | Enable Vector TSO, Memcpy TSO, Half Barrier; if same spot every time → verify files |
+| Process ~10 MB, CPU 0%, black screen | Stalled at start (anti-cheat / DRM suspected) | No fix found (Watch Dogs 2) |
+| Steam `login_failed, timeout` offline | Steam online login required | Steam tab Offline mode + full client; verify online once |
+| Epic tile fails offline in seconds | Needs Epic exchange code | Local import |
+| Endless **Start Extract**, files present | Install state never set | Copy to Download + Import Local Game |
+| Texture scramble / checkerboard | Bad Proton/FEX combo on this SoC (not fixed by Turnip/DXVK A/B) | Prefer **Proton 11 + default Game Presets FEX** |
+| Compatible FEX: 14 FPS / 100% CPU | Too accurate/slow for this game | Custom + TSO safety switches instead |
+
+Steam Offline mode was switched on for some titles in this session and was **not** airplane-tested. Epic has no offline switch; local import was not airplane-tested either.
 
 ## Extra diagnostics that worked
 

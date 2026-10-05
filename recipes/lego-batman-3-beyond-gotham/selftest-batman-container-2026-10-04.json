@@ -27,33 +27,35 @@
   },
   "settings": {
     "wine_or_proton": "proton10.0-arm64x-2",
-    "dxvk_version": "2.4.1-async",
+    "dxvk_version": "dxvk-v2.4.1-async",
+    "cpu_translator": "Fex-20260103",
     "translator_preset": "Custom",
     "gpu_driver": "turnip_v26.1.0_b8",
     "extra": {
       "container": "Batman: Arkham Asylum GOTY (GameHub id 156707)",
-      "launch_via": "lego_run.bat",
+      "launch_via": "0lego.bat",
       "launch_via_aliases": [
-        "0lego.bat",
-        "bm_lego.bat"
+        "bm_lego.bat",
+        "lego_run.bat"
       ],
-      "launch_from": "D: inside the virtual desktop",
-      "fex_custom_enabled": [
-        "Vector TSO",
-        "Memcpy TSO",
-        "Half Barrier"
-      ],
-      "fex_custom_note": "Batman's container used a Custom FEX preset: original values plus Vector TSO, Memcpy TSO, and Half Barrier. Texture scrambling occurred regardless of FEX build, so no FEX build name is recorded here."
+      "launch_from": "Batman tile → PC Game Settings → Container → Enter virtual desktop → My Computer → (D:)",
+      "fex": "Custom/TSO (Batman container). Session summary also wrote this DXVK as 2.4.1-async and this driver as Turnip v26.1.0_b8.",
+      "not_settings": [
+        "TU_DEBUG=noubwc was added to 0lego.bat / lego_run_noubwc.bat and never confirmed",
+        "Turnip_Gen8_V26 was not tested on this path",
+        "Proton version was not changed on this path"
+      ]
     }
   },
   "verification": {
     "status": "verified",
-    "performance": "intro 60 FPS",
+    "performance": "intro 60 FPS, textures scrambled",
     "average_fps": "60",
-    "notes": "Nick Moody phone self-test, 2026-10-04 21:02. Epic copy launched from Batman's container via virtual desktop → D: → 0lego.bat (same as bm_lego.bat / lego_run.bat). Container stack as recorded: Proton 10.0-arm64x-2, DXVK 2.4.1-async, Turnip v26.1.0_b8, plus the container's custom FEX parameters. Intro rendering at 60 FPS, CPU 11%, GPU 72%. Gameplay, saving, and controller were not tested. The Epic library tile itself never launches (files downloaded, GameHub never marks the game installed). Do not start the same script through Run program.",
+    "notes": "Nick Moody phone self-test, 2026-10-04 ~21:02 ET. This is the failed path inside Batman's container, not the working Local Game import. Intro rendered at 60 FPS, CPU 11%, GPU 72%, with texture scrambling (characters, icons, and backgrounds cut into blocks and reshuffled). Launch 0lego.bat (same as bm_lego.bat / lego_run.bat) from (D:) inside the virtual desktop. Container stack used: Proton 10.0-arm64x-2, DXVK 2.4.1-async (launch log name dxvk-v2.4.1-async), Turnip v26.1.0_b8 (turnip_v26.1.0_b8), FEX Custom/TSO starting from Fex-20260103. Airplane mode was not tested.",
     "known_issues": [
-      "Texture scrambling (present in Batman's container on Proton 10.0-arm64x-2 + custom FEX, regardless of Turnip b6/b8, FEX build, or DXVK 2.3.1/2.4.1). Not present on the Proton 11.0-arm64x local-import defaults path.",
-      "Run program fails with DxvkInstance::createInstance: Failed to create Vulkan 1.1 instance. Launch lego_run.bat / 0lego.bat from D: inside the virtual desktop."
+      "Texture scrambling survived Turnip b8 → b6, FEX Fex-20260103 → Fex_20260913, and DXVK 2.4.1-async → 2.3.1-async. Proton 11 + default Game Presets on the Local Game tile did not show this on title, planet, and button icons.",
+      "Run program with the same script fails: DxvkInstance::createInstance: Failed to create Vulkan 1.1 instance. Only the virtual desktop launch worked.",
+      "Turnip_Gen8_V26, a Proton change, and TU_DEBUG=noubwc were not confirmed on this path"
     ]
   },
   "provenance": {
